@@ -827,30 +827,30 @@
           </div>
         </div>
 
-        <form action="" class="contact__form grid">
+        <form name="portfolio-form" action="" class="contact__form grid">
           <div class="contact__inputs grid">
             <div class="contact__content">
               <label for="" class="contact__label">Name</label>
-              <input type="text" class="contact__input">
+              <input type="text" class="contact__input" name="nama">
             </div>
             <div class="contact__content">
               <label for="" class="contact__label">Email</label>
-              <input type="email" class="contact__input">
+              <input type="email" class="contact__input" name="email">
             </div>
             <div class="contact__content">
               <label for="" class="contact__label">Project</label>
-              <input type="text" class="contact__input">
+              <input type="text" class="contact__input" name="project">
             </div>
             <div class="contact__content">
               <label for="" class="contact__label">Message</label>
-              <textarea name="" id="" cols="0" rows="7" class="contact__input"></textarea>
+              <textarea name="" id="" cols="0" rows="7" class="contact__input" name="pesan"></textarea>
             </div>
 
             <div>
-              <a href="#" class="button button--flex">
+              <button type="submit" class="button button--flex">
                 Send Message
                 <i class="uil uil-message button__icon"></i>
-              </a>
+              </button>
             </div>
           </div>
         </form>
@@ -908,6 +908,20 @@
 
   <!--==================== MAIN JS ====================-->
   <script src="assets/js/main.js"></script>
+
+   <!--==================== FORM PORTFOLIO ====================-->
+  <script>
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzA5Lqm6QHiDqt-IQMSLfv22AsEY_Inn_g3GzpkdZtyDL2sWoNtpWJw_jWzS-05bKgynA/exec'
+  const form = document.forms['portfolio-form']
+
+  form.addEventListener('submit', e => {
+    e.preventDefault()
+    fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+      .then(response => console.log('Success!', response))
+      .catch(error => console.error('Error!', error.message))
+  })
+</script>
+
 </body>
 
 </html>
